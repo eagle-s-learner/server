@@ -21,6 +21,7 @@ async function login(req, res){
             if (checkPassword) {
                 jsonwebtoken.sign(
                     {
+                        id: response.rows[0].id,
                         email: response.rows[0].email,
                         password: response.rows[0].password,
                     },
