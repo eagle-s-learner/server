@@ -17,12 +17,11 @@ const cartItemQuantiyUpdate = require("./routes/cartItemQuantiyUpdate.js");
 dotenv.config();
 
 const app = express();
-const origin = process.env.CLIENT;
 
 app.use(bodyParser.json());
 app.use(cors({
     credentials: true,
-    origin: origin,
+    origin: process.env.CLIENT,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 app.use(cookieParser());
