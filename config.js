@@ -2,7 +2,7 @@ const Pg = require("pg");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const db = new Pg.Client({
+const db = new Pg.Pool({
     connectionString: process.env.DB
 });
 
