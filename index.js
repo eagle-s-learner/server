@@ -20,7 +20,7 @@ const app = express();
 
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT,
+    origin: 'https://astonishing-muffin-6d5e53.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type']
 }))
