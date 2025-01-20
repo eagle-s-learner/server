@@ -21,7 +21,7 @@ async function checkAuth(req, res, next){
                 `SELECT * FROM users WHERE email = $1`,
                 [decoded.email]
             );
-                // console.log(response);
+                console.log(response.rows);
 
                 req.user = response.rows[0];
             // });
