@@ -7,7 +7,7 @@ router.use(cookieParser());
 
 const jwtSecret = process.env.JWT_SECRET;
 
-async function logout(req, res){
+async function logout(req, res) {
     const { token } = req.cookies;
     try {
         if (token) {
@@ -16,7 +16,11 @@ async function logout(req, res){
                     throw error;
                 }
 
-                res.clearCookie("token");
+                res.clearCookie("token", {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === "production",
+                    sameSite: "None",
+                });
                 res.status(200).json({ message: "Logged out!!" });
             });
         }
@@ -24,6 +28,6 @@ async function logout(req, res){
         // console.log(error)
         res.status(error.status).json({ message: error.message });
     }
-};
+}
 
 module.exports = logout;
